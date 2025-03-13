@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model prescriber {
+  npi            String  @id @db.VarChar
+  last_name      String? @db.VarChar
+  first_name     String? @db.VarChar
+  org_name       String? @db.VarChar
+  city           String? @db.VarChar
+  state          String? @db.VarChar
+  specialty_type String? @db.VarChar
+}
+
+model drug {
+  npi             String  @id @db.VarChar
+  brand_name      String? @db.VarChar
+  generic_name    String? @db.VarChar
+  tot_benes       Int?
+  tot_claims      Int?
+  tot_30day_fills Int?
+  tot_day_supply  Int?
+
+  @@unique([npi, brand_name, generic_name])
+}
