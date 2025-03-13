@@ -17,6 +17,7 @@
     "@types/papaparse": "^5.3.15"
   },
   "scripts": {
-    "import": "tsx --max-old-space-size=8192 import.ts"
+    "import": "tsx --max-old-space-size=8192 import.ts",
+    "build": "tsc"
   }
 }
