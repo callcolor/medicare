@@ -6,7 +6,7 @@ import responseCache from "./src/utilities/responseCache";
 import { MINUTES } from "./src/utilities/constants";
 import findDrugs from "./src/routes/findDrugs";
 
-const PORT = 3000;
+const PORT = 3030;
 
 const app = express();
 const server = http.createServer(app);
