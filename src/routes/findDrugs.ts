@@ -8,7 +8,7 @@ interface Drug {
 
 const findDrugs = async (req: Request, res: Response) => {
   const name = req.query.name;
-  const limit = req.query.limit ?? 20;
+  const limit = req.query.limit ? Number(req.query.limit) : 20;
   const results = await prisma.$queryRaw<Drug[]>`
     select 
       drug_id,

@@ -5,6 +5,7 @@ import { Server } from "socket.io";
 import responseCache from "./src/utilities/responseCache";
 import { MINUTES } from "./src/utilities/constants";
 import findDrugs from "./src/routes/findDrugs";
+import findPrescriber from "./src/routes/findPrescriber";
 
 const PORT = 3030;
 
@@ -29,6 +30,7 @@ app.use(express.json());
 // app.get("/", index);
 
 app.get("/drugs", responseCache(5 * MINUTES), findDrugs);
+app.get("/prescribers", responseCache(5 * MINUTES), findPrescriber);
 
 io.on("connection", (socket) => {
   console.log("Incoming socket connection!");
