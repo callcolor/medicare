@@ -3,7 +3,12 @@ import { prisma } from "../utilities/prisma";
 import { Prisma } from "@prisma/client";
 
 const findPrescriber = async (req: Request, res: Response) => {
-  const drugs = req.query.drug?.map?.(Number) ?? [];
+  const drugs = req.query.drug?.map
+    ? req.query.drug.map(Number)
+    : req.query.drug
+      ? [Number(req.query.drug)]
+      : [-1];
+  console.log({ drugs });
   const lat = Number(req.query.lat);
   const long = Number(req.query.long);
   const distance = req.query.distance ? Number(req.query.distance) : 10;
